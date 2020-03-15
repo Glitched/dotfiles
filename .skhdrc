@@ -8,6 +8,29 @@
 #   shift + alt -> Swap Windows
 #   shift + cmd -> Move Window
 
+# Set up modes to reduce chord frequency
+:: default : yabai -m config active_window_border_color   0xff775759;\
+   yabai -m config normal_window_border_color   0xff775759;\
+   yabai -m config insert_window_border_color   0xff775759
+
+:: launcher : yabai -m config active_window_border_color   0xff56b6c2;\
+   yabai -m config normal_window_border_color   0xff56b6c2;\
+   yabai -m config insert_window_border_color   0xff56b6c2
+
+alt - g ; launcher
+launcher < alt - g ; default
+launcher < a : open '/Applications/Utilities/Activity Monitor.app'; skhd -k "alt - g"
+launcher < d : open '/Applications/Slack.app'; skhd -k "alt - g"
+launcher < p : open '/Applications/Spotify.app'; skhd -k "alt - g"
+launcher < v : open '/Applications/Visual Studio Code.app.app'; skhd -k "alt - g"
+launcher < f : open ~; skhd -k "alt - g"
+launcher < c : open '/Applications/Vivaldi.app'; skhd -k "alt - g"
+launcher < t : open '/Applications/iTerm 2.app'; skhd -k "alt - g"
+launcher < e : open '/Applications/Messages.app'; skhd -k "alt - g"
+# Comma
+launcher < 0x2B : open '/Applications/System Preferences.app'; skhd -k "alt - g"
+launcher < r : open '/Applications/Preview.app'; skhd -k "alt - g"
+
 # Focus Window
 alt - h : yabai -m window --focus west
 alt - j : yabai -m window --focus south

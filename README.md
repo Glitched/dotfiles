@@ -61,10 +61,6 @@ You could also use `~/.extra` to override settings, functions and aliases from m
 Suggestions/improvements
 [welcome](https://github.com/Glitched/dotfiles/issues)!
 
-## Author
-
-[Ryan Slama](https://RyanSlama.com)
-
 ## Thanks to…
 * [Mathias Bynens](https://mathiasbynens.be/), who provided the base that I built this on
 * [Rosco Kalis](https://kalis.me) for his great [tutorials](https://kalis.me/dotfiles-automating-macos-system-configuration/) and [.files](https://github.com/rkalis/dotfiles)
@@ -81,6 +77,6 @@ Inherited from Mathias:
 * [Nicolas Gallagher](http://nicolasgallagher.com/) and his [dotfiles repository](https://github.com/necolas/dotfiles)
 * [Sindre Sorhus](https://sindresorhus.com/)
 * [Tom Ryder](https://sanctum.geek.nz/) and his [dotfiles repository](https://sanctum.geek.nz/cgit/dotfiles.git/about)
-* [Kevin Suttle](http://kevinsuttle.com/) and his [dotfiles repository](https://github.com/kevinSuttle/dotfiles) and [macOS-Defaults project](https://github.com/kevinSuttle/macOS-Defaults), which aims to provide better documentation for [`~/.macos`](https://mths.be/macos)
+* [Kevin Suttle](http://kevinsuttle.com/) and his [dotfiles repository](https://github.com/kevinSuttle/dotfiles) and [macOS-Defaults project](https://github.com/kevinSuttle/macOS-Defaults), which aims to provide better docs for [`~/.macos`](https://mths.be/macos)
 * [Haralan Dobrev](https://hkdobrev.com/)
 * Anyone who [contributed a patch](https://github.com/mathiasbynens/dotfiles/contributors) or [made a helpful suggestion](https://github.com/mathiasbynens/dotfiles/issues)
