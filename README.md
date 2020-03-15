@@ -2,14 +2,14 @@
 
 This is still in early stages. The automated scripts are not working currently and I have many configs I need to improve and include. Additionally, this is still untested on a new system, but that will change in the coming months.
 
-## Config's Included
+## Configs Included
 
-* Neovim
-* Fish
+* Neovim (Plugins autoinstalled with Plug)
+* Fish (Plugins autoinstalled with fisher)
 * Git
 * macOS
-* iTerm
-* Brew Packages
+* iTerm Profiles
+* Brew Packages (and apps with cask)
 
 ## What Will Be Included
 
@@ -18,11 +18,12 @@ This is still in early stages. The automated scripts are not working currently a
 * Karabiner-Elements
 * Ranger
 * Coc Language Support for Neovim
+* Starship
 The future potentially includes VSCode, Emacs, and Vivaldi support.
 
 ## Installation
 
-**Warning:** If you want to give these dotfiles a try, you should first fork this repository, review the code, and remove things you don’t want or need. Don’t blindly use my settings unless you know what that entails. Use at your own risk!
+**Warning:** If you want to give these dotfiles a try, you should first fork this repository, review the code, and remove things you don’t want or need. Don’t blindly use my settings unless you know what that entails. _Use at your own risk!_
 
 ### Using Git and the bootstrap script
 
