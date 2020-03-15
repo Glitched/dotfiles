@@ -25,35 +25,16 @@ The future potentially includes VSCode, Emacs, and Vivaldi support.
 
 **Warning:** If you want to give these dotfiles a try, you should first fork this repository, review the code, and remove things you don’t want or need. Don’t blindly use my settings unless you know what that entails. _Use at your own risk!_
 
-### Using Git and the bootstrap script
+I'll be automating this soon, but that's not the priority at the moment.
 
-You can clone the repository wherever you want. (I keep it in `~/Dev/dotfiles`) The bootstrapper script will pull in the latest version and copy the files to your home folder.
-
+1. Install homebrew
 ```bash
-git clone https://github.com/Glitched/dotfiles.git && cd dotfiles && source bootstrap.sh
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 ```
-
-To update, `cd` into your local `dotfiles` repository and then:
-
-```bash
-source bootstrap.sh
-```
-
-Alternatively, to update while avoiding the confirmation prompt:
-
-```bash
-set -- -f; source bootstrap.sh
-```
-
-### Specify the `$PATH`
-
-If `~/.path` exists, it will be sourced along with the other files, before any feature testing (such as [detecting which version of `ls` is being used](https://github.com/Glitched/dotfiles/blob/aff769fd75225d8f2e481185a71d5e05b76002dc/.aliases#L21-L26)) takes place.
-
-Here’s an example `~/.path` file that adds `/usr/local/bin` to the `$PATH`:
-
-```bash
-export PATH="/usr/local/bin:$PATH"
-```
+2. Install git `brew install git`
+3. Clone this repository.
+4. Run the installation scripts you want
+5. Symlink the configs you want
 
 ### Add custom commands without creating a new fork
 
