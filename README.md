@@ -1,14 +1,24 @@
 # Ryan’s dotfiles
 
-(Forked from [Mathias's dotfiles](https://github.com/mathiasbynens/dotfiles))
+This is still in early stages. The automated scripts are not working currently and I have many configs I need to improve and include. Additionally, this is still untested on a new system, but that will change in the coming months.
 
-I've removed anthing that does not apply to my workflow and added others. This repository is still very immature, so I do not recommend using it.
+## Config's Included
 
-## Notes about this version
+* Neovim
+* Fish
+* Git
+* macOS
+* iTerm
+* Brew Packages
 
-* My .vimrc only tagets Neovim and shouldn't be used for Vim 
+## What Will Be Included
 
-![Screenshot of my shell prompt](https://i.imgur.com/EkEtphC.png)
+* Yabai
+* Skhd
+* Karabiner-Elements
+* Ranger
+* Coc Language Support for Neovim
+The future potentially includes VSCode, Emacs, and Vivaldi support.
 
 ## Installation
 
@@ -16,7 +26,7 @@ I've removed anthing that does not apply to my workflow and added others. This r
 
 ### Using Git and the bootstrap script
 
-You can clone the repository wherever you want. (I like to keep it in `~/Dev/dotfiles`, with `~/dotfiles` as a symlink.) The bootstrapper script will pull in the latest version and copy the files to your home folder.
+You can clone the repository wherever you want. (I keep it in `~/Dev/dotfiles`) The bootstrapper script will pull in the latest version and copy the files to your home folder.
 
 ```bash
 git clone https://github.com/Glitched/dotfiles.git && cd dotfiles && source bootstrap.sh
@@ -33,16 +43,6 @@ Alternatively, to update while avoiding the confirmation prompt:
 ```bash
 set -- -f; source bootstrap.sh
 ```
-
-### Git-free install
-
-To install these dotfiles without Git:
-
-```bash
-cd; curl -#L https://github.com/Glitched/dotfiles/tarball/master | tar -xzv --strip-components 1 --exclude={README.md,bootstrap.sh,.osx,LICENSE-MIT.txt}
-```
-
-To update later on, just run that command again.
 
 ### Specify the `$PATH`
 
@@ -63,33 +63,15 @@ My `~/.extra` looks something like this:
 ```bash
 # Git credentials
 # Not in the repository, to prevent people from accidentally committing under my name
-GIT_AUTHOR_NAME="Mathias Bynens"
+GIT_AUTHOR_NAME="Ryan Slama"
 GIT_COMMITTER_NAME="$GIT_AUTHOR_NAME"
 git config --global user.name "$GIT_AUTHOR_NAME"
-GIT_AUTHOR_EMAIL="mathias@mailinator.com"
+GIT_AUTHOR_EMAIL="example@example.com"
 GIT_COMMITTER_EMAIL="$GIT_AUTHOR_EMAIL"
 git config --global user.email "$GIT_AUTHOR_EMAIL"
 ```
 
 You could also use `~/.extra` to override settings, functions and aliases from my dotfiles repository. It’s probably better to [fork this repository](https://github.com/Glitched/dotfiles/fork) instead, though.
-
-### Sensible macOS defaults
-
-When setting up a new Mac, you may want to set some sensible macOS defaults:
-
-```bash
-./.macos
-```
-
-### Install Homebrew formulae
-
-When setting up a new Mac, you may want to install some common [Homebrew](https://brew.sh/) formulae (after installing Homebrew, of course):
-
-```bash
-./brew.sh
-```
-
-Some of the functionality of these dotfiles depends on formulae installed by `brew.sh`. If you don’t plan to run `brew.sh`, you should look carefully through the script and manually install any particularly important ones. A good example is Bash/Git completion: the dotfiles use a special version from Homebrew.
 
 ## Feedback
 
@@ -98,10 +80,14 @@ Suggestions/improvements
 
 ## Author
 
-This is mostly by [Mathias Bynens](https://mathiasbynens.be/), with some light contributions on top by [Ryan Slama](https://RyanSlama.com)
+[Ryan Slama](https://RyanSlama.com)
 
 ## Thanks to…
+* [Mathias Bynens](https://mathiasbynens.be/), who provided the base that I built this on
+* [Rosco Kalis](https://kalis.me) for his great [tutorials](https://kalis.me/dotfiles-automating-macos-system-configuration/) and [.files](https://github.com/rkalis/dotfiles)
+* [Paul Irish](https://kalis.me) for his fish config and [.files](https://github.com/paulirish/dotfiles) 
 
+Inherited from Mathias:
 * @ptb and [his _macOS Setup_ repository](https://github.com/ptb/mac-setup)
 * [Ben Alman](http://benalman.com/) and his [dotfiles repository](https://github.com/cowboy/dotfiles)
 * [Cătălin Mariș](https://github.com/alrra) and his [dotfiles repository](https://github.com/alrra/dotfiles)
