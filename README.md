@@ -1,4 +1,4 @@
-# Ryan’s dotfiles
+# Ryan’s Dotfiles
 
 This is still in early stages. The automated scripts are not working currently and I have many configs I need to improve and include. Additionally, this is still untested on a new system, but that will change in the coming months.
 
@@ -10,15 +10,16 @@ This is still in early stages. The automated scripts are not working currently a
 * macOS
 * iTerm Profiles
 * Brew Packages (and apps with cask)
+* Yabai
 
 ## What Will Be Included
 
-* Yabai
 * Skhd
 * Karabiner-Elements
 * Ranger
 * Coc Language Support for Neovim
 * Starship
+
 The future potentially includes VSCode, Emacs, and Vivaldi support.
 
 ## Installation
