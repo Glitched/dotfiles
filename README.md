@@ -1,6 +1,12 @@
 # Ryan’s dotfiles
-(Forked from Mathias's dotfiles)
+
+(Forked from [Mathias's dotfiles](https://github.com/mathiasbynens/dotfiles))
+
 I've removed anthing that does not apply to my workflow and added others. This repository is still very immature, so I do not recommend using it.
+
+## Notes about this version
+
+* My .vimrc only tagets Neovim and shouldn't be used for Vim 
 
 ![Screenshot of my shell prompt](https://i.imgur.com/EkEtphC.png)
 
