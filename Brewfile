@@ -13,7 +13,6 @@ brew "fswatch"
 brew "fzf"
 brew "gcc"
 brew "gdb"
-brew "git"
 brew "gnupg"
 brew "highlight"
 brew "imagemagick"
@@ -48,6 +47,6 @@ cask 'postman'
 cask 'slack'
 cask 'spotify'
 cask 'the-unarchiver'
-cask 'visual-studio-code'
+cask 'vscodium'
 cask 'vivaldi'
 
