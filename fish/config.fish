@@ -9,6 +9,9 @@ end
 # Starship is a super cool prompt
 starship init fish | source
 
+# Set my Editor
+set -gx EDITOR nvim
+
 # Editing & Files
 alias v="nvim"
 alias vi="nvim"
