@@ -25,6 +25,7 @@ alias git=hub
 alias g="git"
 alias gs="git status --short"
 alias gc="git commit -m"
+alias ga="git add"
 alias gca="git commit -am"
 alias gp="git push"
 alias master="git checkout master"

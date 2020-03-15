@@ -11,10 +11,10 @@ This is still in early stages. The automated scripts are not working currently a
 * iTerm Profiles
 * Brew Packages (and apps with cask)
 * Yabai
+* Skhd (For Yabai)
 
 ## What Will Be Included
 
-* Skhd
 * Karabiner-Elements
 * Ranger
 * Coc Language Support for Neovim
