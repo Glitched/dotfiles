@@ -21,8 +21,12 @@ alias chmox='chmod +x'
 alias cleanup_dsstore="find . -name '*.DS_Store' -type f -ls -delete"
 
 # Git
+alias git=hub
 alias g="git"
 alias gs="git status --short"
+alias gc="git commit -m"
+alias gca="git commit -am"
+alias gp="git push"
 alias master="git checkout master"
 
 # Quick directory navigation
