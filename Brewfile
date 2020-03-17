@@ -1,6 +1,7 @@
-tap "rigellute/tap"
+tap "homebrew/cask-fonts"
 tap "koekeishiya/formulae"
 tap "neovim/neovim"
+tap "rigellute/tap"
 
 brew "python"
 brew "ocaml"
@@ -35,9 +36,11 @@ brew "koekeishiya/formulae/skhd"
 brew "koekeishiya/formulae/yabai"
 brew "rigellute/tap/spotify-tui"
 
+# Mac App Store
 brew "mas"
 mas 'Amphetamine', id: 937984704
 
+# Cask Apps
 cask 'burp-suite'
 cask 'daisydisk'
 cask 'figma'
@@ -51,3 +54,5 @@ cask 'the-unarchiver'
 cask 'vscodium'
 cask 'vivaldi'
 
+# Fonts
+cask "font-firacode-nerd-font"
