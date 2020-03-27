@@ -1,6 +1,5 @@
 # Summary
 #
-#
 # Actions that take Directions
 #   Directions are from vim (hjkl)
 #
@@ -17,19 +16,22 @@
    yabai -m config normal_window_border_color   0xff56b6c2;\
    yabai -m config insert_window_border_color   0xff56b6c2
 
-alt - g ; launcher
-launcher < alt - g ; default
-launcher < a : open '/Applications/Utilities/Activity Monitor.app'; skhd -k "alt - g"
-launcher < d : open '/Applications/Slack.app'; skhd -k "alt - g"
-launcher < p : open '/Applications/Spotify.app'; skhd -k "alt - g"
-launcher < v : open '/Applications/Visual Studio Code.app.app'; skhd -k "alt - g"
-launcher < f : open ~; skhd -k "alt - g"
-launcher < c : open '/Applications/Vivaldi.app'; skhd -k "alt - g"
-launcher < t : open '/Applications/iTerm 2.app'; skhd -k "alt - g"
-launcher < e : open '/Applications/Messages.app'; skhd -k "alt - g"
+# Alias alt - g to f16 for when I don't have my keyboard
+alt - g : skhd -k f16
+
+f16 ; launcher
+launcher < f16 ; default
+launcher < a : open '/Applications/Utilities/Activity Monitor.app'; skhd -k f16
+launcher < d : open '/Applications/Slack.app'; skhd -k f16
+launcher < p : open '/Applications/Spotify.app'; skhd -k f16
+launcher < v : open '/Applications/Visual Studio Code.app.app'; skhd -k f16
+launcher < f : open ~; skhd -k f16
+launcher < c : open '/Applications/Vivaldi.app'; skhd -k f16
+launcher < t : open '/Applications/iTerm 2.app'; skhd -k f16
+launcher < e : open '/Applications/Messages.app'; skhd -k f16
 # Comma
-launcher < 0x2B : open '/Applications/System Preferences.app'; skhd -k "alt - g"
-launcher < r : open '/Applications/Preview.app'; skhd -k "alt - g"
+launcher < 0x2B : open '/Applications/System Preferences.app'; skhd -k f16
+launcher < r : open '/Applications/Preview.app'; skhd -k f16
 
 # Focus Window
 alt - h : yabai -m window --focus west
@@ -76,12 +78,12 @@ cmd + alt - 9 : yabai -m space --focus 9
 cmd + alt - 0 : yabai -m space --focus 10
 
 # focus monitor
-ctrl + alt - m  : yabai -m display --focus recent
+# ctrl + alt - m  : yabai -m display --focus recent
 ctrl + alt - z  : yabai -m display --focus prev || yabai -m display --focus last
-ctrl + alt - c  : yabai -m display --focus next || yabai -m display --focus first
+# ctrl + alt - c  : yabai -m display --focus next || yabai -m display --focus first
 
 # send window to monitor and follow focus
-# ctrl + cmd - x  : yabai -m window --display recent; yabai -m display --focus recent
+ctrl + cmd - x  : yabai -m window --display recent; yabai -m display --focus recent
 # ctrl + cmd - z  : yabai -m window --display prev; yabai -m display --focus prev
 # ctrl + cmd - c  : yabai -m window --display next; yabai -m display --focus next
 
