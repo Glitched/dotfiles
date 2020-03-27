@@ -1,6 +1,7 @@
 tap "homebrew/cask-fonts"
 tap "koekeishiya/formulae"
 tap "neovim/neovim"
+tap "railwaycat/emacsmacport"
 tap "rigellute/tap"
 
 brew "python"
@@ -8,7 +9,6 @@ brew "ocaml"
 brew "cmake"
 brew "coreutils"
 brew "docker"
-brew "emacs"
 brew "fish"
 brew "fswatch"
 brew "fzf"
@@ -34,6 +34,7 @@ brew "yarn"
 brew "github/gh/gh"
 brew "koekeishiya/formulae/skhd"
 brew "koekeishiya/formulae/yabai"
+brew "railwaycat/emacsmacport/emacs-mac"
 brew "rigellute/tap/spotify-tui"
 
 # Mac App Store
