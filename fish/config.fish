@@ -20,6 +20,7 @@ set -gx FZF_DEFAULT_OPTS '
   --color=info:#98c379,prompt:#61afef,pointer:#89ddff,marker:#89ddff,spinner:#61afef,header:#61afef
 '
 
+set -gx BAT_THEME 'TwoDark'
 # Editing & Files
 alias v="nvim"
 alias vi="nvim"
