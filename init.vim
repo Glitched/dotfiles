@@ -23,6 +23,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'drewtempelmeyer/palenight.vim'
 Plug 'sheerun/vim-polyglot'
+Plug 'majutsushi/tagbar'
 
 " File Finding
 Plug 'francoiscabrol/ranger.vim'
@@ -63,17 +64,28 @@ let g:airline_section_z = "%p%% %l/%L %c"
 let g:airline#parts#ffenc#skip_expected_string = 'utf-8[unix]'
 
 " Redefine some ugly symbols
+" (Must include complete dict to hot reload config)
 let g:airline_symbols = {
-  \  'readonly': '',
-  \  'branch': '',
-  \  'dirty': ' ⚡',
-\ }
-
+  \   'space': ' ',
+  \   'paste': 'PASTE',
+  \   'spell': 'SPELL',
+  \   'notexists': 'Ɇ',
+  \   'maxlinenr': ' ',
+  \   'linenr': '☰ ',
+  \   'readonly': '',
+  \   'dirty': ' ⚡',
+  \   'modified': '+',
+  \   'crypt': '🔒',
+  \   'keymap':   'Keymap:',
+  \   'ellipsis': '...',
+  \   'branch': '',
+  \   'whitespace': '☲'
+  \ }
 " ##############################
 " ## Colors
 " ##############################
 let g:palenight_color_overrides = {
-\ "black": { "gui": "#0b1118", "cterm": "170", "cterm16": "5" }
+\ "black": { "gui": "#0b1118", "cterm": "170", "cterm16": "5" },
 \}
 
 colorscheme palenight
@@ -83,6 +95,9 @@ set termguicolors
 let g:rainbow_active = 1
 let g:rainbow_conf = {'guifgs': ['#ffc485', '#c792ea', '#89ddff']}
 
+" Recolor Coc Error popups
+hi Pmenu guibg=#272b39
+hi CocErrorSign guifg=#ff8b92
 " Shorten update time from 4000 to 100 (for gitgutter)
 set updatetime=100
 
