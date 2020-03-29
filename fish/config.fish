@@ -30,6 +30,11 @@ alias gd="git diff"
 alias gca="git commit -am"
 alias gp="git push"
 alias master="git checkout master"
+alias lg="lazygit"
+
+# Vim Accidents
+alias :q="exit"
+alias :e="nvim"
 
 # Quick directory navigation
 alias ...="cd ../../"
