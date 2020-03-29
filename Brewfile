@@ -20,6 +20,7 @@ brew "hub"
 brew "imagemagick"
 brew "kubernetes-cli"
 brew "luarocks"
+brew "ncurses"
 brew "neofetch"
 brew "neovim", args: ["HEAD"]
 brew "node"
