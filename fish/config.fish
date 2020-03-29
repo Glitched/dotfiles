@@ -12,10 +12,21 @@ starship init fish | source
 # Set my Editor
 set -gx EDITOR nvim
 
+# Remove fzf's weird selection color
+# set -gx FZF_DEFAULT_OPTS "--color bg:-1"
+set -gx FZF_DEFAULT_OPTS '
+  --color=dark
+  --color=fg:-1,bg:-1,hl:#c3e88d,fg+:#ffffff,bg+:-1,hl+:#c792ea
+  --color=info:#98c379,prompt:#61afef,pointer:#89ddff,marker:#89ddff,spinner:#61afef,header:#61afef
+'
+
 # Editing & Files
 alias v="nvim"
 alias vi="nvim"
 alias chmox='chmod +x'
+
+# Replace cat with bat
+alias cat=bat
 
 # Recursively delete `.DS_Store` files
 alias cleanup_dsstore="find . -name '*.DS_Store' -type f -ls -delete"
