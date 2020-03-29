@@ -90,6 +90,7 @@ let g:palenight_color_overrides = {
 
 colorscheme palenight
 set termguicolors
+set pumblend=10
 
 " Enable Vim Rainbow and set colors
 let g:rainbow_active = 1
@@ -98,6 +99,7 @@ let g:rainbow_conf = {'guifgs': ['#ffc485', '#c792ea', '#89ddff']}
 " Recolor Coc Error popups
 hi Pmenu guibg=#272b39
 hi CocErrorSign guifg=#ff8b92
+
 " Shorten update time from 4000 to 100 (for gitgutter)
 set updatetime=100
 
