@@ -58,3 +58,4 @@ Suggestions/improvements
 * [Mathias Bynens](https://mathiasbynens.be/), who provided the base that I built this on
 * [Rosco Kalis](https://kalis.me) for his great [tutorials](https://kalis.me/dotfiles-automating-macos-system-configuration/) and [.files](https://github.com/rkalis/dotfiles)
 * [Paul Irish](https://kalis.me) for his fish config and [.files](https://github.com/paulirish/dotfiles) 
+* Who23 for a cool [tmux statusbar](https://github.com/Who23/dots/blob/master/tmux.conf)

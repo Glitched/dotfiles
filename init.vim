@@ -21,7 +21,7 @@ endif
 call plug#begin()
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'joshdick/onedark.vim'
+Plug 'drewtempelmeyer/palenight.vim'
 Plug 'sheerun/vim-polyglot'
 
 " File Finding
@@ -52,19 +52,36 @@ Plug 'let-def/ocp-indent-vim' " Ocaml OCP-indent
 
 call plug#end()
 
-" Set AirLine to OneDark
-let g:airline_theme='onedark'
+" ##############################
+" ## Configure Airline
+" ##############################
+let g:airline_theme='palenight'
+let g:airline_powerline_fonts = 1
+let g:airline_skip_empty_sections = 1
+let g:airline_section_z = "%p%% %l/%L %c"
+" Only show unusual encodings
+let g:airline#parts#ffenc#skip_expected_string = 'utf-8[unix]'
 
-" Set Vim to OneDark
-let g:onedark_color_overrides = {
-\ "comment_grey": {"gui": "#808898", "cterm": "59", "cterm16": "15" },
-\ "gutter_fg_grey": {"gui": "#79859e", "cterm": "59", "cterm16": "15" },
+" Redefine some ugly symbols
+let g:airline_symbols = {
+  \  'readonly': '',
+  \  'branch': '',
+  \  'dirty': ' ⚡',
+\ }
+
+" ##############################
+" ## Colors
+" ##############################
+let g:palenight_color_overrides = {
 \ "black": { "gui": "#0b1118", "cterm": "170", "cterm16": "5" }
 \}
-colorscheme onedark
 
-" Enable truecolors
+colorscheme palenight
 set termguicolors
+
+" Enable Vim Rainbow and set colors
+let g:rainbow_active = 1
+let g:rainbow_conf = {'guifgs': ['#ffc485', '#c792ea', '#89ddff']}
 
 " Shorten update time from 4000 to 100 (for gitgutter)
 set updatetime=100
@@ -83,10 +100,6 @@ let g:SignatureMarkerTextHLDynamic=1
 let g:SignaturePeriodicRefresh=1
 " Set default mark color to something tolerable
 hi SignatureMarkText guifg=PeachPuff2
-
-" Enable Vim Rainbow and set colors to OneDark
-let g:rainbow_active = 1
-let g:rainbow_conf = {'guifgs': ['#e5c07b', '#c678dd', '#56b6c2']}
 
 " require the lua module
 lua require("navigation")
