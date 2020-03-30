@@ -24,6 +24,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'drewtempelmeyer/palenight.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'majutsushi/tagbar'
+Plug 'mhinz/vim-startify'
 
 " File Finding
 Plug 'francoiscabrol/ranger.vim'
@@ -184,3 +185,18 @@ function! FloatingFZF()
 endfunction
 " }}}
 
+let g:ascii = [
+      \ '  .M"""bgd `7MMF"            db      `7MMM.     ,MMF"      db',
+      \ ' ,MI    "Y   MM             ;MM:       MMMb    dPMM       ;MM:',
+      \ ' `MMb.       MM            ,V^MM.      M YM   ,M MM      ,V^MM.',
+      \ '   `YMMNq.   MM           ,M  `MM      M  Mb  M" MM     ,M  `MM',
+      \ ' .     `MM   MM      ,    AbmmmqMA     M  YM.P"  MM     AbmmmqMA',
+      \ ' Mb     dM   MM     ,M   A"     VML    M  `YM"   MM    A"     VML',
+      \ ' P"Ybmmd"  .JMMmmmmMMM .AMA.   .AMMA..JML. `"  .JMML..AMA.   .AMMA.',
+\ ]
+
+let g:startify_custom_header =
+  \ [''] +
+  \ startify#center(g:ascii) +
+  \ [''] +
+  \ startify#center(startify#fortune#boxed())
