@@ -17,7 +17,6 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-
 call plug#begin()
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -25,6 +24,7 @@ Plug 'drewtempelmeyer/palenight.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'majutsushi/tagbar'
 Plug 'mhinz/vim-startify'
+Plug 'maxbrunsfeld/vim-yankstack'
 
 " File Finding
 Plug 'francoiscabrol/ranger.vim'
@@ -57,6 +57,8 @@ call plug#end()
 " ##############################
 " ## Configure Airline
 " ##############################
+let g:airline#extensions#tabline#enabled = 1
+
 let g:airline_theme='palenight'
 let g:airline_powerline_fonts = 1
 let g:airline_skip_empty_sections = 1
@@ -82,6 +84,7 @@ let g:airline_symbols = {
   \   'branch': '',
   \   'whitespace': '☲'
   \ }
+
 " ##############################
 " ## Colors
 " ##############################
@@ -185,6 +188,55 @@ function! FloatingFZF()
 endfunction
 " }}}
 
+" Floating Term
+hi Floating guibg=#272b39
+let s:float_term_border_win = 0
+let s:float_term_win = 0
+function! FloatTerm(...)
+  " Configuration
+  let height = float2nr((&lines - 2) * 0.8)
+  let row = float2nr((&lines - height) / 2)
+  let width = float2nr(&columns * 0.8)
+  let col = float2nr((&columns - width) / 2)
+  " Border Window
+  let border_opts = {
+        \ 'relative': 'editor',
+        \ 'row': row - 1,
+        \ 'col': col - 2,
+        \ 'width': width + 4,
+        \ 'height': height + 2,
+        \ 'style': 'minimal'
+        \ }
+  " Terminal Window
+  let opts = {
+        \ 'relative': 'editor',
+        \ 'row': row,
+        \ 'col': col,
+        \ 'width': width,
+        \ 'height': height,
+        \ 'style': 'minimal'
+        \ }
+  let bbuf = nvim_create_buf(v:false, v:true)
+  let s:float_term_border_win = nvim_open_win(bbuf, v:true, border_opts)
+  let buf = nvim_create_buf(v:false, v:true)
+  let s:float_term_win = nvim_open_win(buf, v:true, opts)
+  " Styling
+  call setwinvar(s:float_term_border_win, '&winhl', 'Normal:Floating')
+  call setwinvar(s:float_term_win, '&winhl', 'Normal:Floating')
+  if a:0 == 0
+    terminal
+  else
+    call termopen(a:1)
+  endif
+  startinsert
+  " Close border window when terminal window close
+  autocmd TermClose * ++once :bd! | call nvim_win_close(s:float_term_border_win, v:true)
+endfunction
+
+" ##############################
+" ## Startify
+" ##############################
+
 let g:ascii = [
       \ '  .M"""bgd `7MMF"            db      `7MMM.     ,MMF"      db',
       \ ' ,MI    "Y   MM             ;MM:       MMMb    dPMM       ;MM:',
@@ -200,3 +252,45 @@ let g:startify_custom_header =
   \ startify#center(g:ascii) +
   \ [''] +
   \ startify#center(startify#fortune#boxed())
+
+" ##############################
+" ## <Leader> Commands
+" ##############################
+
+nnoremap <SPACE> <Nop>
+let mapleader = "\<Space>"
+let localmapleader = "\<CR>"
+
+" Yankstack (paste through time)
+call yankstack#setup()
+nmap Y y$
+nmap <leader>p <Plug>yankstack_substitute_older_paste
+nmap <leader>P <Plug>yankstack_substitute_newer_paste
+
+" IDE Features (Tags & Files)
+nnoremap <Leader>de :Tagbar<CR> :Defx -split=vertical -winwidth=30 -direction=topleft<CR>
+nnoremap <Leader>tb :Tagbar<CR>
+nnoremap <Leader>dx :Defx -split=vertical -winwidth=30 -direction=topleft<CR>
+
+" Open Floating Windows
+nnoremap <Leader>aj :AnyJump<CR>
+nnoremap <Leader>at :call FloatTerm()<CR>
+nnoremap <Leader>ag :call FloatTerm('"lazygit"')<CR>
+nnoremap <Leader>ai :call FloatTerm('"tig"')<CR>
+nnoremap <Leader>ar :call FloatTerm('"ranger"')<CR>
+nnoremap <Leader>as :call FloatTerm('"spt"')<CR>
+
+" Vim manipulation
+nnoremap <Leader><Leader>r :so $MYVIMRC<CR>
+nnoremap <Leader>w :w<CR>
+
+" Split windows
+nnoremap <Leader>l :vsplit<CR>
+nnoremap <Leader>k :split<CR>
+
+" Buffer
+nnoremap <Leader>tn :tabn<CR>
+nnoremap <Leader>tp :tabp<CR>
+nnoremap <Leader>tc :tabe<CR>
+nnoremap <Leader>tx :tabclose<CR>
+
