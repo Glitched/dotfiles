@@ -130,15 +130,6 @@ nnoremap <silent> <leader>kj :lua Terminal(2)<cr>
 nnoremap <silent> <leader>kk :lua Terminal(3)<cr>
 nnoremap <silent> <leader>kl :lua Terminal(4)<cr>
 
-" Jump to definition under cursore
-nnoremap <leader>j :AnyJump<CR>
-
-" open previous opened file (after jump)
-nnoremap <leader>ab :AnyJumpBack<CR>
-
-" open last closed search window again
-nnoremap <leader>al :AnyJumpLastResults<CR>
-
 " Opam Initialization
 let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
 execute "set rtp+=" . g:opamshare . "/merlin/vim"
@@ -272,8 +263,15 @@ nnoremap <Leader>de :Tagbar<CR> :Defx -split=vertical -winwidth=30 -direction=to
 nnoremap <Leader>tb :Tagbar<CR>
 nnoremap <Leader>dx :Defx -split=vertical -winwidth=30 -direction=topleft<CR>
 
+" AnyJump
+" Jump to definition under cursor
+nnoremap <leader>j :AnyJump<CR>
+" open previous opened file (after jump)
+nnoremap <leader>ab :AnyJumpBack<CR>
+" open last closed search window again
+nnoremap <leader>al :AnyJumpLastResults<CR>
+
 " Open Floating Windows
-nnoremap <Leader>aj :AnyJump<CR>
 nnoremap <Leader>at :call FloatTerm()<CR>
 nnoremap <Leader>ag :call FloatTerm('"lazygit"')<CR>
 nnoremap <Leader>ai :call FloatTerm('"tig"')<CR>
