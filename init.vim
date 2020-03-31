@@ -1,3 +1,7 @@
+" ##############################
+" ## Basic Vim Settings
+" ##############################
+
 set ttimeoutlen=0  " Make <esc> more responsive
 set number         " Line Numbers
 set signcolumn=yes " Always have wide gutter
@@ -9,13 +13,20 @@ set softtabstop=2
 set shiftwidth=2
 set expandtab
 
+" ##############################
 " Auto install Plug
+" ##############################
+
 " https://github.com/junegunn/vim-plug/wiki/tips#automatic-installation
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
+
+" ##############################
+" ## Plugins
+" ##############################
 
 call plug#begin()
 Plug 'vim-airline/vim-airline'
@@ -139,7 +150,6 @@ set rtp^="/Users/ryan/.opam/default/share/ocp-indent/vim"
 autocmd FileType ocaml set indentexpr=ocpindent#OcpIndentLine()
 autocmd BufWritePre *.ml :normal gg=G
 
-
 " Use tab for autocompletion with Coc
 function! s:check_back_space() abort
   let col = col('.') - 1
@@ -155,36 +165,17 @@ inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 " FZF {{{
 let g:fzf_preview_window = 'right:60%'
-let g:fzf_layout = { 'window': 'call FloatingFZF()' }
-function! FloatingFZF()
-  let buf = nvim_create_buf(v:false, v:true)
-  call setbufvar(buf, '&signcolumn', 'no')
+let g:fzf_layout = { 'window': 'call FloatTerm("fzf")' }
 
-  let height = float2nr(&lines * 0.6) " 60% of screen
-  let width = float2nr(&columns * 0.8) " 80% of screen
-  let horizontal = float2nr((&columns - width) / 2)
-  let vertical = float2nr(&lines * 0.1) " space to top: 10%
+" ##############################
+" Floating Windows
+" ##############################
 
-  let opts = {
-        \ 'relative': 'editor',
-        \ 'row': vertical,
-        \ 'col': horizontal,
-        \ 'width': width,
-        \ 'height': height,
-        \ 'anchor': 'NW',
-        \ 'style': 'minimal'
-        \ }
-
-  call nvim_open_win(buf, v:true, opts)
-endfunction
-" }}}
-
-" Floating Term
 hi Floating guibg=#272b39
 let s:float_term_border_win = 0
 let s:float_term_win = 0
 function! FloatTerm(...)
-  " Configuration
+
   let height = float2nr((&lines - 2) * 0.8)
   let row = float2nr((&lines - height) / 2)
   let width = float2nr(&columns * 0.8)
@@ -207,16 +198,19 @@ function! FloatTerm(...)
         \ 'height': height,
         \ 'style': 'minimal'
         \ }
+
   let bbuf = nvim_create_buf(v:false, v:true)
   let s:float_term_border_win = nvim_open_win(bbuf, v:true, border_opts)
   let buf = nvim_create_buf(v:false, v:true)
   let s:float_term_win = nvim_open_win(buf, v:true, opts)
-  " Styling
+  " Styling (Give the window a background color)
   call setwinvar(s:float_term_border_win, '&winhl', 'Normal:Floating')
   call setwinvar(s:float_term_win, '&winhl', 'Normal:Floating')
+
   if a:0 == 0
     terminal
-  else
+  " Do nothing for fzf so plugin an take effect
+  elseif a:1 != 'fzf'
     call termopen(a:1)
   endif
   startinsert
