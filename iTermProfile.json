@@ -11,11 +11,11 @@
   },
   "Rows" : 25,
   "Ansi 11 Color" : {
-    "Red Component" : 1,
+    "Red Component" : 0.9918975830078125,
     "Color Space" : "sRGB",
-    "Blue Component" : 0.5215686559677124,
+    "Blue Component" : 0.51734268922700721,
     "Alpha Component" : 1,
-    "Green Component" : 0.76922723405501414
+    "Green Component" : 0.762994607116525
   },
   "Use Italic Font" : true,
   "Foreground Color" : {
@@ -290,7 +290,7 @@
     "Red Component" : 0.70213186740875244,
     "Color Space" : "sRGB",
     "Blue Component" : 1,
-    "Alpha Component" : 0.25,
+    "Alpha Component" : 0.0901336669921875,
     "Green Component" : 0.9268307089805603
   },
   "BM Growl" : true,
@@ -365,6 +365,10 @@
     "0xf701-0x280000" : {
       "Text" : "0x1b 0x1b 0x5b 0x42",
       "Action" : 11
+    },
+    "0x70-0x100000" : {
+      "Action" : 13,
+      "Text" : ""
     },
     "0x38-0x40000" : {
       "Text" : "0x7f",
@@ -554,11 +558,11 @@
     "Green Component" : 1
   },
   "Ansi 8 Color" : {
-    "Red Component" : 0.26274511218070984,
+    "Red Component" : 0.15294117647058825,
     "Color Space" : "sRGB",
-    "Blue Component" : 0.34509804844856262,
+    "Blue Component" : 0.22352941176470589,
     "Alpha Component" : 1,
-    "Green Component" : 0.27843138575553894
+    "Green Component" : 0.16862745098039217
   },
   "Badge Color" : {
     "Red Component" : 1,
