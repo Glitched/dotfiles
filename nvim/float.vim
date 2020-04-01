@@ -2,6 +2,7 @@
 " ## Floating Windows
 " ##############################
 
+" Set background color for floating windows
 hi Floating guibg=#272b39
 
 let s:float_term_border_win = 0
@@ -13,6 +14,7 @@ function! FloatTerm(...)
   let row = float2nr((&lines - height) / 2)
   let width = float2nr(&columns * 0.8)
   let col = float2nr((&columns - width) / 2)
+
   " Border Window
   let border_opts = {
         \ 'relative': 'editor',
@@ -22,6 +24,7 @@ function! FloatTerm(...)
         \ 'height': height + 2,
         \ 'style': 'minimal'
         \ }
+
   " Terminal Window
   let opts = {
         \ 'relative': 'editor',
@@ -36,12 +39,15 @@ function! FloatTerm(...)
   let s:float_term_border_win = nvim_open_win(bbuf, v:true, border_opts)
   let buf = nvim_create_buf(v:false, v:true)
   let s:float_term_win = nvim_open_win(buf, v:true, opts)
+
   " Styling (Give the window a background color)
   call setwinvar(s:float_term_border_win, '&winhl', 'Normal:Floating')
   call setwinvar(s:float_term_win, '&winhl', 'Normal:Floating')
 
   if a:0 == 0
     terminal
+  elseif a:1 == 'lf'
+    execute 'Lf'
   " Do nothing for fzf so plugin can take effect
   elseif a:1 != 'fzf'
     call termopen(a:1)

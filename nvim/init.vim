@@ -38,11 +38,14 @@ Plug 'mhinz/vim-startify'
 Plug 'maxbrunsfeld/vim-yankstack'
 
 " File Finding
-Plug 'francoiscabrol/ranger.vim'
+" Plug 'francoiscabrol/ranger.vim'
+Plug 'ptzz/lf.vim'
+Plug 'rbgrouleff/bclose.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
 Plug 'kshenoy/vim-signature' " Show marks in gutter
+Plug 'mbbill/undotree'
 
 Plug 'luochen1990/rainbow' " Color my brackets
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Intellisense
@@ -206,6 +209,7 @@ nmap <leader>P <Plug>yankstack_substitute_newer_paste
 nnoremap <Leader>de :Tagbar<CR> :Defx -split=vertical -winwidth=30 -direction=topleft<CR>
 nnoremap <Leader>tb :Tagbar<CR>
 nnoremap <Leader>dx :Defx -split=vertical -winwidth=30 -direction=topleft<CR>
+nnoremap <Leader>tu :UndotreeToggle<cr>
 
 " AnyJump
 " Jump to definition under cursor
@@ -221,11 +225,13 @@ nnoremap <Leader>ag :call FloatTerm('lazygit')<CR>
 nnoremap <Leader>ai :call FloatTerm('tig')<CR>
 nnoremap <Leader>ar :call FloatTerm('ranger')<CR>
 nnoremap <Leader>as :call FloatTerm('spt')<CR>
+nnoremap <Leader>af :call FloatTerm('lf')<CR>
 
 " Vim manipulation
 nnoremap <Leader><Leader>r :so $MYVIMRC<CR>
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q<CR>
+nnoremap <Leader>x :x<CR>
 
 " Split windows
 nnoremap <Leader>l :vsplit<CR>
