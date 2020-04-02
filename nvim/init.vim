@@ -29,6 +29,7 @@ endif
 " ##############################
 
 call plug#begin()
+
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'drewtempelmeyer/palenight.vim'
@@ -58,14 +59,12 @@ Plug 'tpope/vim-projectionist'
 " Git
 Plug 'airblade/vim-gitgutter' " Show diff symbols in gutter
 Plug 'tpope/vim-fugitive'
-Plug 'jreybert/vimagit'
 Plug 'rhysd/git-messenger.vim' "Show commit message with <Leader>gm
 
 Plug 'easymotion/vim-easymotion'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'pechorin/any-jump.nvim'
 
-Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' } " File browser
 Plug 'let-def/ocp-indent-vim' " Ocaml OCP-indent
 
 call plug#end()
@@ -186,7 +185,7 @@ let g:startify_custom_header =
   \ startify#center(startify#fortune#boxed())
 
 " ##############################
-" ## Includes
+" ## Functions
 " ##############################
 
 runtime float.vim
@@ -204,11 +203,12 @@ call yankstack#setup()
 nmap Y y$
 nmap <leader>p <Plug>yankstack_substitute_older_paste
 nmap <leader>P <Plug>yankstack_substitute_newer_paste
+" Paste from system clipboard
+nmap <leader><leader>p "*p
+nmap <leader><leader>P "*P
 
-" IDE Features (Tags & Files)
-nnoremap <Leader>de :Tagbar<CR> :Defx -split=vertical -winwidth=30 -direction=topleft<CR>
+" Panel toggles
 nnoremap <Leader>tb :Tagbar<CR>
-nnoremap <Leader>dx :Defx -split=vertical -winwidth=30 -direction=topleft<CR>
 nnoremap <Leader>tu :UndotreeToggle<cr>
 
 " AnyJump
@@ -229,8 +229,13 @@ nnoremap <Leader>af :call FloatTerm('lf')<CR>
 
 " Vim manipulation
 nnoremap <Leader><Leader>r :so $MYVIMRC<CR>
+nnoremap <Leader><Leader>i :PlugInstall<CR>
+nnoremap <Leader><Leader>c :PlugClean<CR>
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q<CR>
+nnoremap <Leader><Leader>q :q!<CR>
+nnoremap <Leader>Q :qa<CR>
+nnoremap <Leader><Leader>Q :qa!<CR>
 nnoremap <Leader>x :x<CR>
 
 " Split windows
