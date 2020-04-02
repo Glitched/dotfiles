@@ -191,6 +191,27 @@ let g:startify_custom_header =
 runtime float.vim
 
 " ##############################
+" ## Normal Key Maps
+" ##############################
+
+" Set 's' to 'd' except without storing in a buffer
+nnoremap s "_d
+nnoremap S "_D
+nnoremap ss "_dd
+
+" Simplify Window Navigation
+nnoremap <c-h> <c-w>h
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-l> <c-w>l
+
+" Swap H with ^ and L with $
+noremap ^ H
+noremap $ L
+noremap H ^
+noremap L $
+
+" ##############################
 " ## <Leader> Commands
 " ##############################
 
@@ -237,6 +258,11 @@ nnoremap <Leader><Leader>q :q!<CR>
 nnoremap <Leader>Q :qa<CR>
 nnoremap <Leader><Leader>Q :qa!<CR>
 nnoremap <Leader>x :x<CR>
+nnoremap <Leader>h :Noh<CR>
+
+" Run the current line as if it were a command.
+" Often more convenient than q: when experimenting.
+nnoremap <leader>e :exe getline(line('.'))<cr>
 
 " Split windows
 nnoremap <Leader>l :vsplit<CR>
