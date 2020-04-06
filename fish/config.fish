@@ -12,15 +12,15 @@ starship init fish | source
 # Set my Editor
 set -gx EDITOR nvim
 
-# Remove fzf's weird selection color
-# set -gx FZF_DEFAULT_OPTS "--color bg:-1"
+set FZF_DEFAULT_COMMAND 'rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+# Nord
 set -gx FZF_DEFAULT_OPTS '
   --color=dark
-  --color=fg:-1,bg:-1,hl:#c3e88d,fg+:#ffffff,bg+:-1,hl+:#c792ea
-  --color=info:#98c379,prompt:#61afef,pointer:#89ddff,marker:#89ddff,spinner:#61afef,header:#61afef
+  --color fg:#D8DEE9,bg:-1,hl:#A3BE8C,fg+:#D8DEE9,bg+:-1,hl+:#A3BE8C
+  --color pointer:#BF616A,info:#4C566A,spinner:#4C566A,header:#4C566A,prompt:#81A1C1,marker:#EBCB8B
 '
 
-set -gx BAT_THEME 'TwoDark'
+set -gx BAT_THEME 'Nord'
 # Editing & Files
 alias v="nvim"
 alias vi="nvim"

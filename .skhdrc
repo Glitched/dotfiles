@@ -8,13 +8,13 @@
 #   shift + cmd -> Move Window
 
 # Set up modes to reduce chord frequency
-:: default : yabai -m config active_window_border_color   0xff775759;\
-   yabai -m config normal_window_border_color   0xff775759;\
-   yabai -m config insert_window_border_color   0xff775759
+:: default : yabai -m config active_window_border_color   0xff81A1C1;\
+   yabai -m config normal_window_border_color   0xff81A1C1;\
+   yabai -m config insert_window_border_color   0xff81A1C1
 
-:: launcher : yabai -m config active_window_border_color   0xff56b6c2;\
-   yabai -m config normal_window_border_color   0xff56b6c2;\
-   yabai -m config insert_window_border_color   0xff56b6c2
+:: launcher : yabai -m config active_window_border_color   0xffA3BE8C;\
+   yabai -m config normal_window_border_color   0xffA3BE8C;\
+   yabai -m config insert_window_border_color   0xffA3BE8C
 
 # Alias alt - g to f16 for when I don't have my keyboard
 alt - g : skhd -k f16
