@@ -105,6 +105,10 @@ lua require'colorizer'.setup()
 let g:asyncrun_open = 6                 " Async terminal commands
 call yankstack#setup()                  " Paste from the past
 
+" Disable unwanted default mappings
+let g:lf_map_keys = 0
+let g:bclose_no_plugin_maps = 1
+
 " }}}
 
 " }}}
@@ -352,7 +356,12 @@ nnoremap <Leader>af :call FloatTerm('lf')<CR>
 
 " Leader shortcuts for commonly used Vim actions {{{
 
+nnoremap <Leader>b :Buffers<CR>
+nnoremap <Leader>f :Files<CR>
+nnoremap <Leader>i :Lines<CR>
+
 " Vim manipulation
+
 nnoremap <Leader><Leader>r :so $MYVIMRC<CR>
 nnoremap <Leader><Leader>i :PlugInstall<CR>
 nnoremap <Leader><Leader>c :PlugClean<CR>
