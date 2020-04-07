@@ -12,7 +12,8 @@ starship init fish | source
 # Set my Editor
 set -gx EDITOR nvim
 
-set FZF_DEFAULT_COMMAND 'rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+# FZF Config
+set -gx FZF_DEFAULT_COMMAND 'fd --type file'
 # Nord
 set -gx FZF_DEFAULT_OPTS '
   --color=dark
