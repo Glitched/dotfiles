@@ -165,8 +165,9 @@ hi EasyMotionShade     guifg=#616E88
 " Enable Vim Rainbow and set colors
 let g:rainbow_conf = {'guifgs': ['#8FBCBB', '#EBCB8B', '#A3BE8C', '#B48EAD']}
 
-hi SignatureMarkText guifg=#B48EAD      " Default sidebar mark color
+hi Search guifg=NONE guibg=#4C566A gui=bold " Make search hl less obtrusive
 hi Floating          guibg=#242933      " Floating window background color
+hi SignatureMarkText guifg=#B48EAD      " Default sidebar mark color
 hi CocHighlightText  guibg=#4C566A      " Make cursor hold highlights visible
 
 " }}}
@@ -370,7 +371,7 @@ nnoremap <Leader><Leader>q :q!<CR>
 nnoremap <Leader>Q :qa<CR>
 nnoremap <Leader><Leader>Q :qa!<CR>
 nnoremap <Leader>x :x<CR>
-nnoremap <Leader>h :Noh<CR>
+nnoremap <Leader>h :noh<CR>
 
 " Run the current line as if it were a command.
 " Often more convenient than q: when experimenting.
