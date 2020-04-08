@@ -54,7 +54,6 @@ Plug 'luochen1990/rainbow'              " Color my brackets
 Plug 'norcalli/nvim-colorizer.lua'      " Color colors
 
 " UI Panels
-Plug 'majutsushi/tagbar'
 Plug 'liuchengxu/vista.vim'
 Plug 'mbbill/undotree'
 Plug 'maxbrunsfeld/vim-yankstack'
@@ -335,7 +334,6 @@ nnoremap ss "_dd
 
 " Panel toggles {{{
 
-nnoremap <Leader>tb :Tagbar<CR>
 nnoremap <Leader>tv :Vista!!<CR>
 nnoremap <Leader>tu :UndotreeToggle<cr>
 
