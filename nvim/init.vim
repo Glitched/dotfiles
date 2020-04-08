@@ -168,6 +168,7 @@ let g:rainbow_conf = {'guifgs': ['#8FBCBB', '#EBCB8B', '#A3BE8C', '#B48EAD']}
 
 hi SignatureMarkText guifg=#B48EAD      " Default sidebar mark color
 hi Floating          guibg=#242933      " Floating window background color
+hi CocHighlightText  guibg=#4C566A      " Make cursor hold highlights visible
 
 " }}}
 
@@ -348,9 +349,9 @@ command! -nargs=1 Aside AsyncRun -mode=term -pos=right -cols=50 <args>
 nnoremap <Leader>at :call FloatTerm()<CR>
 nnoremap <Leader>ag :call FloatTerm('lazygit')<CR>
 nnoremap <Leader>ai :call FloatTerm('tig')<CR>
-nnoremap <Leader>ar :call FloatTerm('ranger')<CR>
 nnoremap <Leader>as :call FloatTerm('spt')<CR>
 nnoremap <Leader>af :call FloatTerm('lf')<CR>
+nnoremap <Leader>an :call FloatTerm('nnn')<CR>
 
 " }}}
 
