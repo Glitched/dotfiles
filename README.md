@@ -8,14 +8,21 @@ This is still in early stages. The automated scripts are not working currently a
 * Fish (Plugins autoinstalled with fisher)
 * Git
 * macOS
-* iTerm Profiles
+* iTerm Profile
 * Brew Packages (and apps with cask)
 * Yabai
-* Skhd (For Yabai)
+* Skhd
 * Karabiner-Elements
 * tmux
+* lf
 
-The future potentially includes Ranger, Starship, VSCode, Emacs, and Vivaldi support.
+I will include a config for Starship when format string support arrives, but I just can't add much value at the moment.
+I also replace several default tools with modern rust alternatives.
+
+* cat -> bat
+* ls -> broot or exa
+* grep -> ripgrep
+* find -> fd
 
 ## Installation
 
