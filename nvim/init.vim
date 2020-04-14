@@ -48,7 +48,6 @@ Plug 'arcticicestudio/nord-vim'
 Plug 'kshenoy/vim-signature'            " Show marks in gutter
 
 " Code Colors
-Plug 'sheerun/vim-polyglot'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'luochen1990/rainbow'              " Color my brackets
 Plug 'norcalli/nvim-colorizer.lua'      " Color colors
@@ -92,6 +91,7 @@ Plug 'pechorin/any-jump.nvim'
 
 " Language Specific
 Plug 'let-def/ocp-indent-vim'           " Ocaml OCP-indent
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 call plug#end()
 
@@ -183,6 +183,15 @@ execute "set rtp+=" . g:opamshare . "/merlin/vim"
 set rtp^="/Users/ryan/.opam/default/share/ocp-indent/vim"
 autocmd FileType ocaml set indentexpr=ocpindent#OcpIndentLine()
 autocmd BufWritePre *.ml :call CocAction('format')
+
+" Go
+" disable vim-go :GoDef short cut (gd)
+" this is handled by LanguageClient [LC]
+let g:go_def_mapping_enabled = 0
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
+let g:go_gopls_options = ['-remote=auto']
+let g:go_code_completion_enabled = 0
 
 " }}}
 
