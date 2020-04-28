@@ -20,6 +20,8 @@ set termguicolors                       " 24-bit color support
 set noshowmode                          " Hide -- INSERT -- below Airline
 set scrolloff=15                        " Keep my cursor reasonably centered
 
+set autowrite                           " Write file before building
+
 nnoremap <SPACE> <Nop>
 let mapleader = "\<Space>"
 let localmapleader = "\<CR>"
@@ -46,6 +48,9 @@ Plug 'mhinz/vim-startify'               " Custom start screen
 Plug 'vim-airline/vim-airline'
 Plug 'arcticicestudio/nord-vim'
 Plug 'kshenoy/vim-signature'            " Show marks in gutter
+Plug 'vimwiki/vimwiki'
+Plug 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-pandoc-syntax'
 
 " Code Colors
 Plug 'ntpeters/vim-better-whitespace'
@@ -74,11 +79,15 @@ Plug 'skywind3000/asyncrun.vim'
 " Code manipulation
 " More intelligent and lower false positive rate than the standard autopairs plugin
 Plug 'Krasjet/auto.pairs'
+Plug 'AndrewRadev/splitjoin.vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-repeat'
+
+" Snippets
+Plug 'SirVer/ultisnips'
 
 " Git
 Plug 'airblade/vim-gitgutter'           " Show diff symbols in gutter
@@ -176,8 +185,8 @@ hi CocHighlightText  guibg=#4C566A      " Make cursor hold highlights visible
 
 " OCaml
 " Opam Initialization
-let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
-execute "set rtp+=" . g:opamshare . "/merlin/vim"
+" let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
+" execute "set rtp+=" . g:opamshare . "/merlin/vim"
 
 " OCP Indent (Hopefully ocamlformat can handle this soon)
 set rtp^="/Users/ryan/.opam/default/share/ocp-indent/vim"
@@ -187,11 +196,39 @@ autocmd BufWritePre *.ml :call CocAction('format')
 " Go
 " disable vim-go :GoDef short cut (gd)
 " this is handled by LanguageClient [LC]
+autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
 let g:go_def_mapping_enabled = 0
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
+let g:go_fmt_command = "goimports"
 let g:go_gopls_options = ['-remote=auto']
 let g:go_code_completion_enabled = 0
+let g:go_auto_type_info = 1           " Automatically show context info
+let g:go_decls_mode = 'fzf'           " Enable support w/o ctrl-p
+let g:go_doc_popup_window = 1         " Display docs in popup
+
+" Syntax highlighting
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_operators = 1
+
+" Nord for Go Debugger
+hi GoDebugBreakpoint ctermfg=0 ctermbg=117 guifg=#BF616A guibg=none gui=bold
+hi GoDebugCurrent ctermfg=7 ctermbg=12 guifg=#ECEFF4 guibg=#4C566A
+call sign_define("godebugbreakpoint", {"text":"->","texthl":"GoDebugBreakpoint"})
+call sign_define("godebugcurline", {"text":"=>","texthl":"GoDebugCurrent"})
+
+
+" Go actions based on <Leader>r
+autocmd FileType go nnoremap <leader>r  :GoRun<CR>
+autocmd FileType go nnoremap <leader>rr :GoRun<CR>
+autocmd FileType go nnoremap <leader>rt :GoTest<CR>
+autocmd FileType go nnoremap <leader>rc :GoCoverageToggle<CR>
+autocmd FileType go nnoremap <leader>rl :GoMetaLinter<CR>
+autocmd FileType go nnoremap <leader>rd :GoDecls<CR>
+autocmd FileType go nnoremap <leader>rg :GoDeclsDir<CR>
 
 " }}}
 
@@ -214,7 +251,10 @@ inoremap ;q <C-O><Plug>(coc-fix-current)
 inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " Navigate through competion windows Tab/S-Tab/CR
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+inoremap <silent><expr> <cr> pumvisible() ?
+      \ coc#_select_confirm() :
+      \"\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
@@ -230,7 +270,7 @@ endfunction
 " Open help page or show Coc floating info
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>'
+    execute 'h '.expand('<cword>')
   else
     call CocAction('doHover')
   endif
@@ -295,6 +335,8 @@ nnoremap <leader>al :AnyJumpLastResults<CR>
 " Use `[g` and `]g` to navigate diagnostics
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
+map <C-n> :cnext<CR>
+map <C-m> :cprevious<CR>
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
@@ -368,6 +410,7 @@ nnoremap <Leader>an :call FloatTerm('nnn')<CR>
 nnoremap <Leader>b :Buffers<CR>
 nnoremap <Leader>f :Files<CR>
 nnoremap <Leader>i :Lines<CR>
+nnoremap <Leader>aa :A<CR>
 
 " Vim manipulation
 
@@ -469,3 +512,7 @@ endfunction
 
 " }}}
 
+" {{{ Notes
+let g:vimwiki_list = [{'path': '~/vimwiki/',
+                      \ 'syntax': 'markdown', 'ext': '.md'}]
+" }}}
