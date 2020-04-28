@@ -215,11 +215,13 @@ let g:go_highlight_function_calls = 1
 let g:go_highlight_operators = 1
 
 " Nord for Go Debugger
-hi GoDebugBreakpoint ctermfg=0 ctermbg=117 guifg=#BF616A guibg=none gui=bold
-hi GoDebugCurrent ctermfg=7 ctermbg=12 guifg=#ECEFF4 guibg=#4C566A
-call sign_define("godebugbreakpoint", {"text":"->","texthl":"GoDebugBreakpoint"})
-call sign_define("godebugcurline", {"text":"=>","texthl":"GoDebugCurrent"})
-
+let g:go_highlight_debug = 0
+hi GoDebugBreakpoint guifg=#BF616A guibg=none gui=bold
+hi GoDebugCurrent guifg=none guibg=#434C5E
+hi GoDebugCurrentSign guifg=#88C0D0 gui=bold
+let g:go_debug_breakpoint_sign_text = '->'
+" TODO: Find a way to define signs after vim-go loads them
+autocmd FileType go nnoremap call sign_define("godebugcurline", {"text":"=>","texthl":"GoDebugCurrentSign"})
 
 " Go actions based on <Leader>r
 autocmd FileType go nnoremap <leader>r  :GoRun<CR>
@@ -229,6 +231,19 @@ autocmd FileType go nnoremap <leader>rc :GoCoverageToggle<CR>
 autocmd FileType go nnoremap <leader>rl :GoMetaLinter<CR>
 autocmd FileType go nnoremap <leader>rd :GoDecls<CR>
 autocmd FileType go nnoremap <leader>rg :GoDeclsDir<CR>
+
+" Go Debugger Shortcuts
+autocmd FileType go nnoremap <leader>da :GoDebugStart<CR>
+autocmd FileType go nnoremap <leader>dd :GoDebugStop<CR>
+autocmd FileType go nnoremap <leader>dr :GoDebugRestart<CR>
+autocmd FileType go nnoremap <leader>dt :GoDebugTest<CR>
+autocmd FileType go nnoremap <leader>db :GoDebugBreakpoint<CR>
+autocmd FileType go nnoremap <leader>dc :GoDebugContinue<CR>
+autocmd FileType go nnoremap <leader>dn :GoDebugNext<CR>
+autocmd FileType go nnoremap <leader>ds :GoDebugStep<CR>
+autocmd FileType go nnoremap <leader>do :GoDebugStepOut<CR>
+autocmd FileType go nnoremap <leader>dp :GoDebugPrint
+autocmd FileType go nnoremap <leader>de :GoDebugSet<CR>
 
 " }}}
 
@@ -446,6 +461,7 @@ endfunc
 let g:SignatureMarkTextHLDynamic=1
 let g:SignatureMarkerTextHLDynamic=1
 let g:SignaturePeriodicRefresh=1
+let g:gitgutter_sign_priority = 6      " Reduce priority so breakpoints are visible
 
 " <Leader>gm shows a popup with the commit for a given line
 nnoremap <Leader>gc :Gcommit<CR>
