@@ -22,6 +22,9 @@ set -gx FZF_DEFAULT_OPTS '
 '
 
 set -gx BAT_THEME 'Nord'
+
+# Path
+set PATH ~/go/bin $PATH
 # Editing & Files
 alias v="nvim"
 alias vi="nvim"
