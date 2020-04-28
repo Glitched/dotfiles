@@ -89,6 +89,9 @@
 
 [core]
 
+  # Use delta to highlight diffs like GitHub
+  pager = delta --theme=Nord --hunk-style=plain
+
 	# Use custom `.gitignore` and `.gitattributes`
 	excludesfile = ~/.gitignore
 	attributesfile = ~/.gitattributes
