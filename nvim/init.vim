@@ -101,6 +101,7 @@ Plug 'pechorin/any-jump.nvim'
 " Language Specific
 Plug 'let-def/ocp-indent-vim'           " Ocaml OCP-indent
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'hhvm/vim-hack'
 
 call plug#end()
 
@@ -116,6 +117,7 @@ call yankstack#setup()                  " Paste from the past
 " Disable unwanted default mappings
 let g:lf_map_keys = 0
 let g:bclose_no_plugin_maps = 1
+let g:UltiSnipsExpandTrigger=""
 
 " }}}
 
@@ -179,6 +181,9 @@ hi Floating          guibg=#242933      " Floating window background color
 hi SignatureMarkText guifg=#B48EAD      " Default sidebar mark color
 hi CocHighlightText  guibg=#4C566A      " Make cursor hold highlights visible
 
+
+hi ExtraWhitespace   guibg=#BF616A        " Nord red for better whitespace
+
 " }}}
 
 " Language Specific {{{
@@ -206,6 +211,7 @@ let g:go_code_completion_enabled = 0
 let g:go_auto_type_info = 1           " Automatically show context info
 let g:go_decls_mode = 'fzf'           " Enable support w/o ctrl-p
 let g:go_doc_popup_window = 1         " Display docs in popup
+let g:go_term_enabled = 1             " Run go commands in a term
 
 " Syntax highlighting
 let g:go_highlight_types = 1
@@ -333,7 +339,7 @@ let g:startify_custom_header =
 
 " Easymotion config
 let g:EasyMotion_smartcase = 1
-nmap F <Plug>(easymotion-s2)
+nmap F <Plug>(easymotion-s)
 nmap f <Plug>(easymotion-bd-w)
 imap ;S <C-O><Plug>(easymotion-s2)
 imap ;s <C-O><Plug>(easymotion-bd-w)
@@ -389,6 +395,10 @@ nnoremap <leader>p <Plug>yankstack_substitute_older_paste
 nnoremap <leader>P <Plug>yankstack_substitute_newer_paste
 
 " Paste from system clipboard
+vmap <leader><leader>y "*y
+vmap <leader><leader>Y "*Y
+nmap <leader><leader>y "*y
+nmap <leader><leader>Y "*Y
 nmap <leader><leader>p "*p
 nmap <leader><leader>P "*P
 
@@ -413,6 +423,7 @@ command! -nargs=1 Aside AsyncRun -mode=term -pos=right -cols=50 <args>
 
 nnoremap <Leader>at :call FloatTerm()<CR>
 nnoremap <Leader>ag :call FloatTerm('lazygit')<CR>
+nnoremap <Leader>g  :call FloatTerm('lazygit')<CR>
 nnoremap <Leader>ai :call FloatTerm('tig')<CR>
 nnoremap <Leader>as :call FloatTerm('spt')<CR>
 nnoremap <Leader>af :call FloatTerm('lf')<CR>
@@ -468,6 +479,8 @@ nnoremap <Leader>gc :Gcommit<CR>
 nnoremap <Leader>gd :Gvdiffsplit<CR>
 nnoremap <Leader>gb :Gblame<CR>
 nnoremap <Leader>gs :Gstatus<CR>
+nnoremap <Leader>gp :Gpush<CR>
+nnoremap <Leader>gP :Gpull<CR>
 
 " }}}
 
