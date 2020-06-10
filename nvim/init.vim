@@ -266,7 +266,7 @@ nmap <leader>rn <Plug>(coc-rename)
 inoremap ;f <C-O>:call CocAction('format')<CR>
 
 " Apply AutoFix to problem on the current line.
-nmap <leader>qf  <Plug>(coc-fix-current)
+nmap <leader>cf  <Plug>(coc-fix-current)
 inoremap ;q <C-O><Plug>(coc-fix-current)
 
 inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
@@ -423,7 +423,7 @@ command! -nargs=1 Aside AsyncRun -mode=term -pos=right -cols=50 <args>
 
 nnoremap <Leader>at :call FloatTerm()<CR>
 nnoremap <Leader>ag :call FloatTerm('lazygit')<CR>
-nnoremap <Leader>g  :call FloatTerm('lazygit')<CR>
+nnoremap <Leader>gg  :call FloatTerm('lazygit')<CR>
 nnoremap <Leader>ai :call FloatTerm('tig')<CR>
 nnoremap <Leader>as :call FloatTerm('spt')<CR>
 nnoremap <Leader>af :call FloatTerm('lf')<CR>
