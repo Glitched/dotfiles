@@ -25,13 +25,23 @@ set -gx BAT_THEME 'Nord'
 
 # Path
 set PATH ~/go/bin $PATH
+
+# Go
+set -x GOPRIVATE slack-github.com/slack
+
 # Editing & Files
 alias v="nvim"
 alias vi="nvim"
+alias vif="nvim (fzf)"
 alias chmox='chmod +x'
+
+alias k='kubectl'
 
 # Replace cat with bat
 alias cat=bat
+
+# Exa is better than ls
+alias ll="exa -la"
 
 # Recursively delete `.DS_Store` files
 alias cleanup_dsstore="find . -name '*.DS_Store' -type f -ls -delete"
@@ -45,6 +55,7 @@ alias ga="git add"
 alias gd="git diff"
 alias gca="git commit -am"
 alias gp="git push"
+alias gP="git pull"
 alias master="git checkout master"
 alias lg="lazygit"
 
