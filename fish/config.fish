@@ -32,7 +32,8 @@ set -x GOPRIVATE slack-github.com/slack
 # Editing & Files
 alias v="nvim"
 alias vi="nvim"
-alias vif="nvim (fzf)"
+alias vif="nvim (fzf --preview 'bat --color "always" {}' --preview-window=right:60%)"
+bind -M insert \cp 'vif'
 alias chmox='chmod +x'
 
 alias k='kubectl'
