@@ -12,6 +12,9 @@ starship init fish | source
 # Set my Editor
 set -gx EDITOR nvim
 
+# Add go bins to path
+set -gx PATH $PATH ~/go/bin/
+
 # FZF Config
 set -gx FZF_DEFAULT_COMMAND 'fd --type file'
 # Nord
@@ -34,6 +37,7 @@ alias v="nvim"
 alias vi="nvim"
 alias vif="nvim (fzf --preview 'bat --color "always" {}' --preview-window=right:60%)"
 bind -M insert \cp 'vif'
+bind -M insert \co 'cd (fd --type directory | fzf); commandline -f repaint'
 alias chmox='chmod +x'
 
 alias k='kubectl'
