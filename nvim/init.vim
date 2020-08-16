@@ -25,6 +25,8 @@ set autowrite                           " Write file before building
 nnoremap <SPACE> <Nop>
 let mapleader = "\<Space>"
 let localmapleader = "\<CR>"
+nnoremap ; :
+nnoremap : ;
 
 " }}}
 
