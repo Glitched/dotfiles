@@ -47,10 +47,10 @@ call plug#begin()
 Plug 'mhinz/vim-startify'               " Custom start screen
 Plug 'vim-airline/vim-airline'
 Plug 'arcticicestudio/nord-vim'
-Plug 'kshenoy/vim-signature'            " Show marks in gutter
 Plug 'vimwiki/vimwiki'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
+" Plug 'kshenoy/vim-signature'            " Show marks in gutter
 
 " Code Colors
 Plug 'ntpeters/vim-better-whitespace'
@@ -67,9 +67,11 @@ Plug 'ptzz/lf.vim'
 Plug 'rbgrouleff/bclose.vim'            " Required for lf.vim's <Leader>f
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'antoinemadec/coc-fzf'
 
 " LSP & Debug Adapter
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'puremourning/vimspector'
 
 " Tasks
@@ -188,6 +190,11 @@ hi ExtraWhitespace   guibg=#BF616A        " Nord red for better whitespace
 
 " Language Specific {{{
 
+" Hacklang
+autocmd FileType hack setlocal equalprg=hackfmt
+autocmd BufWritePre *.hack :normal gg=G``
+autocmd BufWritePre *.php :normal gg=G``
+
 " OCaml
 " Opam Initialization
 " let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
@@ -203,6 +210,7 @@ autocmd BufWritePre *.ml :call CocAction('format')
 " this is handled by LanguageClient [LC]
 autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
 let g:go_def_mapping_enabled = 0
+let g:go_doc_keywordprg_enabled = 0
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
 let g:go_fmt_command = "goimports"
@@ -341,9 +349,8 @@ let g:startify_custom_header =
 let g:EasyMotion_smartcase = 1
 nmap F <Plug>(easymotion-s)
 nmap f <Plug>(easymotion-bd-w)
-imap ;S <C-O><Plug>(easymotion-s2)
+imap ;S <C-O><Plug>(easymotion-s)
 imap ;s <C-O><Plug>(easymotion-bd-w)
-map  / <Plug>(easymotion-sn)
 
 " AnyJump
 " Jump to definition under cursor
@@ -384,6 +391,8 @@ noremap ^ H
 noremap $ L
 noremap H ^
 noremap L $
+inoremap ;a <Esc>A
+inoremap ;o <Esc>A<Cr>
 
 " }}}
 
@@ -433,9 +442,23 @@ nnoremap <Leader>an :call FloatTerm('nnn')<CR>
 
 " Leader shortcuts for commonly used Vim actions {{{
 
+nnoremap <Leader>d :bnext<CR>
+" FZF
 nnoremap <Leader>b :Buffers<CR>
 nnoremap <Leader>f :Files<CR>
 nnoremap <Leader>i :Lines<CR>
+" Coc-FZF
+nnoremap <Leader>cc :CocFzfListResume<CR>
+nnoremap <Leader>co :CocFzfList outline<CR>
+nnoremap <Leader>cs :CocFzfList symbols<CR>
+nnoremap <Leader>ca :CocFzfList actions<CR>
+nnoremap <Leader>cd :CocFzfList diagnostics<CR>
+nnoremap <Leader>cb :CocFzfList diagnostics --current-buf<CR>
+nnoremap <Leader>ce :CocFzfList extensions<CR>
+nnoremap <Leader>cl :CocFzfList location<CR>
+nnoremap <Leader>cv :CocFzfList services<CR>
+nnoremap <Leader>cr :CocFzfList sources<CR>
+" Alternate
 nnoremap <Leader>aa :A<CR>
 
 " Vim manipulation
@@ -444,6 +467,7 @@ nnoremap <Leader><Leader>r :so $MYVIMRC<CR>
 nnoremap <Leader><Leader>i :PlugInstall<CR>
 nnoremap <Leader><Leader>c :PlugClean<CR>
 nnoremap <Leader>w :w<CR>
+nnoremap <Leader>s :w<CR>
 nnoremap <Leader>q :q<CR>
 nnoremap <Leader><Leader>q :q!<CR>
 nnoremap <Leader>Q :qa<CR>
@@ -545,3 +569,16 @@ endfunction
 let g:vimwiki_list = [{'path': '~/vimwiki/',
                       \ 'syntax': 'markdown', 'ext': '.md'}]
 " }}}
+
+function! VimRebaseModeMaps()
+    nnoremap <buffer> P 0ciwpick<ESC>j
+    nnoremap <buffer> R 0ciwreword<ESC>j
+    nnoremap <buffer> E 0ciwedit<ESC>j
+    nnoremap <buffer> S 0ciwskip<ESC>j
+    nnoremap <buffer> F 0ciwfixup<ESC>j
+    nnoremap <buffer> X 0ciwx<ESC>j
+    nnoremap <buffer> D 0ciwdrop<ESC>j
+endfunction
+
+autocmd FileType gitrebase call VimRebaseModeMaps()
+

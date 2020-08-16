@@ -14,6 +14,7 @@ set -gx EDITOR nvim
 
 # Add go bins to path
 set -gx PATH $PATH ~/go/bin/
+set -gx PATH $PATH ~/.emacs.d/bin/
 
 # FZF Config
 set -gx FZF_DEFAULT_COMMAND 'fd --type file'
